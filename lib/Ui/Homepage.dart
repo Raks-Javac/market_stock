@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:fluttertest/Ui/searchSreen.dart';
-import 'package:fluttertest/services/apiServises.dart';
+
+import '../core/services/api_servises.dart';
+import 'searchSreen.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
