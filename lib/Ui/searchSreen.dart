@@ -62,6 +62,7 @@ class _SeachScreenState extends State<SeachScreen> {
                               AppConstants.startDate = val.start;
                               AppConstants.endDate = val.end;
                             });
+                            Navigator.pop(context);
                             return null;
                           },
                           onChanged: (val) {
@@ -69,12 +70,14 @@ class _SeachScreenState extends State<SeachScreen> {
                               AppConstants.startDate = val!.start;
                               AppConstants.endDate = val.end;
                             });
+                            Navigator.pop(context);
                           },
                           onSaved: (val) {
                             setState(() {
                               AppConstants.startDate = val!.start;
                               AppConstants.endDate = val.end;
                             });
+                            Navigator.pop(context);
                           }),
                     );
                   });
@@ -93,8 +96,8 @@ class _SeachScreenState extends State<SeachScreen> {
                 ? FutureBuilder(
                     future: ApiService().getEod(
                         "",
-                        "${AppConstants.startDate.year}-${AppConstants.startDate.month}-${AppConstants.startDate.day}",
-                        "${AppConstants.endDate.year}-${AppConstants.endDate.month}-${AppConstants.endDate.day}"),
+                        "${AppConstants.startDate!.year}-${AppConstants.startDate?.month}-${AppConstants.startDate?.day}",
+                        "${AppConstants.endDate?.year}-${AppConstants.endDate?.month}-${AppConstants.endDate?.day}"),
                     builder: (context, snaphot) {
                       if (snaphot.hasData) {
                         return Column(
@@ -230,9 +233,15 @@ class _SeachScreenState extends State<SeachScreen> {
                           ],
                         );
                       }
-                      return const Center(child: CircularProgressIndicator());
+                      return const Padding(
+                        padding: EdgeInsets.all(8.0),
+                        child: Center(child: Text("Search results not found")),
+                      );
                     })
-                : const Center(child: CircularProgressIndicator()),
+                : const Padding(
+                    padding: EdgeInsets.all(8.0),
+                    child: Center(child: Text("Search results not found")),
+                  ),
           ],
         ),
       ),

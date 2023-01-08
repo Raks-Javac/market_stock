@@ -23,14 +23,14 @@ class ApiService {
   Future getEod(String symbol, String dateFrom, String dateTo) async {
     print("From filter : $dateFrom .....$dateTo,");
     var getEod = Uri.parse(
-        "$baseUrl?access_key=$accesskey&symbols=$symbol&date_from=$dateFrom&date_to=$dateTo");
+        "$baseUrl?access_key=$accesskey&symbols=AAPL&date_from=2022-12-29&date_to=2023-01-08");
     final result = await http.get(getEod);
     if (kDebugMode) {
-      print(result.body);
+      print(result.statusCode);
     }
-    AppConstants.tickerList2 = json.decode(result.body);
-    print(
-        "From filter : $dateFrom .....$dateTo, ${AppConstants.tickerList['date'].length}");
+
+    print(result.body);
+
     return json.decode(result.body);
   }
 }
