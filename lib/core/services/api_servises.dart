@@ -7,7 +7,7 @@ import '../utils/constants.dart';
 
 class ApiService {
   static const String baseUrl = "http://api.marketstack.com/v1";
-  static const String accesskey = "b8cabffa93dfcd536249d67b2aab95c4";
+  static const String accesskey = "";
   Future getAlltickers() async {
     var allTickerUri = Uri.parse("$baseUrl/tickers?access_key=$accesskey");
     final result = await http.get(allTickerUri);
